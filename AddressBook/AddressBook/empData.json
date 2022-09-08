@@ -1,0 +1,26 @@
+{
+  "employees": [
+    {
+      "FirstName":"Mohan",
+      "LastName":"Sahu",
+      "Address":"Green Valey",
+      "City":"Bhilai",
+      "State":"CG",
+      "Zip":490020,
+      "Phone":"7898625487",
+      "Email":"sahu@12gmail.com"
+    },
+
+    {
+      "FirstName":"Govind",
+      "LastName":"Bhatt",
+      "Address":"smriti nagar",
+      "City":"Bhilai",
+      "State":"CG",
+      "Zip":490010,
+      "Phone":"9124541887",
+      "Email":"govind@12gmail.com"
+    }
+   
+  ]
+}
