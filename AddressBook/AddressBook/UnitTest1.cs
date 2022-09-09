@@ -40,5 +40,33 @@ namespace AddressBook
                 Console.WriteLine("FirstName " + e.FirstName + ", Lastame: " + e.Lastame + ", Address: " + e.Address + ", City: " + e.City + ", State: " + e.State + ", Zip: " + e.Zip + ", Phone: " + e.Phone + ", Email" + e.Email);
             }
         }
+         [TestMethod]
+        public void AddEmployee()
+        {
+            RestRequest request = new RestRequest("/employees",Method.POST);
+            JObject jobject = new JObject();
+            jobject.Add("FirstName","Vivek");
+            jobject.Add("LastName", "Singh");
+            jobject.Add("Address", "nehru nagar");
+            jobject.Add("City", "korba");
+            jobject.Add("State", "CG");
+            jobject.Add("Zip", 490020);
+            jobject.Add("Phone", "7898625487");
+            jobject.Add("Email", "Vivek@123gmail.com");
+            request.AddParameter("application/json", jobject, ParameterType.RequestBody);
+            IRestResponse response = client.Execute(request);
+            Assert.AreEqual(response.StatusCode, System.Net.HttpStatusCode.Created);
+            Employee dataResponse = JsonConvert.DeserializeObject<Employee>(response.Content);
+            Assert.AreEqual("Vivek",dataResponse.FirstName);
+            Assert.AreEqual("Singh", dataResponse.LastName);
+            Assert.AreEqual("nehru nagar", dataResponse.Address);
+            Assert.AreEqual("korba", dataResponse.City);
+            Assert.AreEqual("CG", dataResponse.State);
+            Assert.AreEqual(490020, dataResponse.Zip);
+            Assert.AreEqual("7898625487", dataResponse.Phone);
+            Assert.AreEqual("Vivek@123gmail.com", dataResponse.Email);
+
+            System.Console.WriteLine(response.Content);
+        }
     }
 }
